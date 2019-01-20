@@ -33,12 +33,19 @@ class ReplyController extends Controller
         return back()->with('flash', 'Reply successfully created!');
     }
 
+    public function update(Reply $reply)
+    {
+        $this->authorize('update', $reply);
+
+        $this->validate(request(), ['body' => 'required']);
+
+        $reply->update(request(['body']));
+    }
+
     public function destroy(Reply $reply)
     {
-//        if ($reply->user_id != auth()->id()) {
-//            abort(403);
-//        }
         $this->authorize('update', $reply);
+
         $reply->delete();
 
         return back();
