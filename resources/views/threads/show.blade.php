@@ -34,27 +34,13 @@
 
                     <br>
 
-                    <replies :data="{{ $thread->replies }}" @removed="repliesCount--"></replies>
+                    <replies :data="{{ $thread->replies }}"
+                             @added="repliesCount++"
+                             @removed="repliesCount--"></replies>
 
                     {{--{{ $replies->links() }}--}}
 
-                    @auth
-                        <form method="POST" action="{{ $thread->path() . '/replies' }}">
-                            @csrf
-                            <textarea name="body"
-                                      id="body"
-                                      class="form-control"
-                                      placeholder="Have something to say?"
-                                      rows="5">
-                            </textarea>
 
-                            <button type="submit" class="btn btn-primary">Post</button>
-                        </form>
-                    @endauth
-
-                    @guest
-                        <p class="text-center">Please <a href="{{ route('login') }}">sign in</a> to participate in this discussion.</p>
-                    @endguest
                 </div>
 
                 <div class="col-md-4">
