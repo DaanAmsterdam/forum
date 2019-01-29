@@ -13,9 +13,11 @@ require('./bootstrap');
 
 // all the components
 import FlashComponent from './components/Flash.vue';
+import PaginatorComponent from './components/Paginator.vue';
 import ThreadPage from './pages/Thread.vue';
 
 Vue.component('flash', FlashComponent);
+Vue.component('paginator', PaginatorComponent);
 Vue.component('thread-view', ThreadPage);
 
 // the Vue instance...
