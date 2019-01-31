@@ -19,7 +19,7 @@ class Reply extends Model
         parent::boot();
 
         static::created(function ($reply) {
-           $reply->thread->increment('replies_count');
+            $reply->thread->increment('replies_count');
         });
 
         static::deleted(function ($reply) {

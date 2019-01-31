@@ -45,11 +45,15 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="body">
+                            <div class="body mb-2">
                                 This thread was published {{ $thread->created_at->diffForHumans() }} by
                                 <a href="#">{{ $thread->owner->name }}</a> and currently
                                 has <span v-text="repliesCount"></span> {{ str_plural('reply', $thread->replies_count) }}.
                             </div>
+
+                            <p>
+                                <subscribe-button :is-active="{{ json_encode($thread->isSubscribedTo) }}"></subscribe-button>
+                            </p>
                         </div>
                     </div>
                 </div>

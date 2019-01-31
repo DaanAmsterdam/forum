@@ -19,14 +19,14 @@ class ReadThreadsTest extends TestCase
     public function a_user_can_view_all_threads()
     {
         $this->get('/threads')
-             ->assertSee($this->thread->title);
+            ->assertSee($this->thread->title);
     }
 
     /** @test */
     public function a_user_can_view_a_single_thread()
     {
         $this->get($this->thread->path())
-             ->assertSee($this->thread->title);
+            ->assertSee($this->thread->title);
     }
 
     /** @test */
@@ -45,8 +45,8 @@ class ReadThreadsTest extends TestCase
         $threadNotInChannel = create('App\Thread');
 
         $this->get('/threads/' . $channel->slug)
-             ->assertSee($threadInChannel->title)
-             ->assertDontSee($threadNotInChannel->title);
+            ->assertSee($threadInChannel->title)
+            ->assertDontSee($threadNotInChannel->title);
     }
 
     /** @test */
@@ -78,7 +78,7 @@ class ReadThreadsTest extends TestCase
                 $threadWithThreeReplies->title,
                 $threadWithTwoReplies->title,
                 $threadWithNoReplies->title
-        ]);
+            ]);
     }
 
     /** @test */
