@@ -5,7 +5,6 @@
 //});
 Route::get('/', 'ThreadController@index');
 
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -27,3 +26,5 @@ Route::post('/replies/{reply}/favorites', 'FavoriteController@store');
 Route::delete('/replies/{reply}/favorites', 'FavoriteController@destroy');
 
 Route::get('/profiles/{user}', 'ProfileController@show')->name('profile');
+Route::get('/profiles/{user}/notifications/', 'UserNotificationController@index');
+Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationController@destroy');
