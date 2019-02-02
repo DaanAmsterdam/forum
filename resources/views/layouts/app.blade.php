@@ -13,10 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script>
-        window.App = {!! json_encode([
-            'signedIn' => Auth::check(),
-            'user' => Auth::user()
-        ]) !!};
+        window.App = {!! json_encode(['signedIn' => Auth::check(), 'user' => Auth::user()]) !!};
     </script>
 
     <!-- Fonts -->

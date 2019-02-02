@@ -11,14 +11,18 @@ Vue.prototype.authorize = function(handler) {
 
 require('./bootstrap');
 
-// all the components
-import FlashComponent from './components/Flash.vue';
-import PaginatorComponent from './components/Paginator.vue';
-import ThreadPage from './pages/Thread.vue';
+// vue pages
+import Thread from './pages/Thread.vue';
 
-Vue.component('flash', FlashComponent);
-Vue.component('paginator', PaginatorComponent);
-Vue.component('thread-view', ThreadPage);
+// vue components
+import Flash from './components/Flash.vue';
+import Paginator from './components/Paginator.vue';
+import UserNotifications from './components/UserNotifications.vue';
+
+Vue.component('thread-view', Thread);
+Vue.component('flash', Flash);
+Vue.component('paginator', Paginator);
+Vue.component('user-notifications', UserNotifications);
 
 // the Vue instance...
 let app = new Vue({
