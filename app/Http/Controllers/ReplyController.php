@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Spam;
 use App\Reply;
 use App\Thread;
-use Illuminate\Http\Request;
 
 class ReplyController extends Controller
 {
@@ -12,7 +12,7 @@ class ReplyController extends Controller
     {
         $this->middleware('auth')->except('index');
     }
-    
+
     public function index($channelId, Thread $thread)
     {
         return $thread->replies()->paginate(10);
@@ -23,12 +23,14 @@ class ReplyController extends Controller
      *
      * @param $channelId
      * @param Thread $thread
+     * @param Spam $spam
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store($channelId, Thread $thread)
+    public function store($channelId, Thread $thread, Spam $spam)
     {
         $this->validate(request(), ['body' => 'required']);
+        $spam->detect(request('body'));
 
         $reply = $thread->addReply([
             'body' => request('body'),
