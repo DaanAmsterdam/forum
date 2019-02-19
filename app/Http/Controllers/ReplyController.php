@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Spam;
 use App\Reply;
 use App\Thread;
+use App\Inspections\Spam;
 
 class ReplyController extends Controller
 {
@@ -19,9 +19,9 @@ class ReplyController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Persist a new reply
      *
-     * @param $channelId
+     * @param integer $channelId
      * @param Thread $thread
      * @param Spam $spam
      * @return \Illuminate\Http\Response
